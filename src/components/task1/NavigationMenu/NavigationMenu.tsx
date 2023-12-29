@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import './NavigationMenu.css';
 
 function Menu() {

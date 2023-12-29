@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom';
 import './App.css';
 import NavigationMenu from './components/task1/NavigationMenu/NavigationMenu';
 
@@ -14,18 +14,29 @@ function App(): JSX.Element {
       {/* шапка */}
       <header className='header'>
         <h1>Домашнее задание «React Router»</h1>
-        <h2>Задачи расположены последовательно в столбик</h2>
+        <h2>Задачи расположены по разделам</h2>
+
+        <nav className="nav-link-container">
+          <NavLink to="/" className="nav-link">Главная</NavLink>
+          <NavLink to="/task1/" className="nav-link">Задача №1</NavLink>
+          <NavLink to="/task2/main" className="nav-link">Задача №2</NavLink>
+          <NavLink to="/task3/main" className="nav-link">Задача №3</NavLink>
+        </nav>
       </header>
-      
-      {/* Компонент задачи №1 */}
-      <NavigationMenu />
 
-      {/* Компонент задачи №2 */}
-      {/* < /> */}
+      <Routes>
+        <Route path="/" element={<div className='container'>Привет</div>} />
 
-      {/* Компонент задачи №3 */}
-      {/* < /> */}
-      
+        {/* Компонент задачи №1 */}
+        <Route path="/task1/*" element={<NavigationMenu />} />
+
+        {/* Компонент задачи №2 */}
+        {/* <Route path="/task2/*" element={<Task2 />} /> */}
+
+        {/* Компонент задачи №3 */}
+        {/* <Route path="/task3/*" element={<Task3 />} /> */}
+      </Routes>
+
       {/* Просто подвал */}
       <footer className='footer'><p>Просто подвал</p></footer>
     </Router>

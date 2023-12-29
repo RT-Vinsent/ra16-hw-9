@@ -4,6 +4,11 @@
   background: #260F26;
 }
 
+.navigation-menu h2 {
+  color: #fff;
+  opacity: .9;
+}
+
 .page {
   width: 90%;
   max-width: 1000px;
@@ -33,7 +38,7 @@
   display: flex;
   width: 90%;
   max-width: 1000px;
-  margin: 3rem auto;
+  margin: 1.6rem auto 3rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
   background: #361F36;
 }

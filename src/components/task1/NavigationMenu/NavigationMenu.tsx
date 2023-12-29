@@ -1,15 +1,20 @@
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import './NavigationMenu.css';
 
 function Menu() {
+  const location = useLocation();
   const isActive = 'menu__item menu__item-active';
   const isNoActive = 'menu__item';
+
+  const isExactActive = (path: string) => location.pathname === path;
+
   return (
     <nav className="menu">
-      <NavLink to="/" className={(navData) => navData.isActive ? isActive : isNoActive}>Главная</NavLink>
-      <NavLink to="/drift" className={(navData) => navData.isActive ? isActive : isNoActive}>Дрифт-такси</NavLink>
-      <NavLink to="/timeattack" className={(navData) => navData.isActive ? isActive : isNoActive}>Time Attack</NavLink>
-      <NavLink to="/forza" className={(navData) => navData.isActive ? isActive : isNoActive}>Forza Karting</NavLink>
+      {/* <NavLink to="/task1/" className={(navData) => navData.isActive ? isActive : isNoActive}>Главная</NavLink> */}
+      <NavLink to="/task1/" className={isExactActive('/task1/') ? isActive : isNoActive}>Главная</NavLink>
+      <NavLink to="/task1/drift" className={(navData) => navData.isActive ? isActive : isNoActive}>Дрифт-такси</NavLink>
+      <NavLink to="/task1/timeattack" className={(navData) => navData.isActive ? isActive : isNoActive}>Time Attack</NavLink>
+      <NavLink to="/task1/forza" className={(navData) => navData.isActive ? isActive : isNoActive}>Forza Karting</NavLink>
     </nav>
   )
 }
@@ -86,13 +91,14 @@ export function TimeAttackPage() {
 export default function NavigationMenu() {
   return (
     <div className="container navigation-menu">
+      <h2>«Список и детали»</h2>
       <Menu />
       <div className="page">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/drift" element={<DriftPage />} />
-          <Route path="/timeattack" element={<TimeAttackPage />} />
-          <Route path="/forza" element={<ForzaPage />} />
+          <Route path="" element={<HomePage />} />
+          <Route path="drift" element={<DriftPage />} />
+          <Route path="timeattack" element={<TimeAttackPage />} />
+          <Route path="forza" element={<ForzaPage />} />
         </Routes>
       </div>
     </div>

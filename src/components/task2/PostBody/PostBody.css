@@ -1,0 +1,23 @@
+.post-content p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: left;
+  margin-top: 12px;
+
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.like-button,
+.comment-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: grey;
+  flex-grow: 1;
+  padding: 10px;
+}

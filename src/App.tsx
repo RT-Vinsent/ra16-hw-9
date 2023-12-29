@@ -1,7 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import './App.css';
 import NavigationMenu from './components/task1/NavigationMenu/NavigationMenu';
+import CRUD from './components/task2/CRUD/CRUD';
 
 /**
  * Главный компонент приложения
@@ -17,21 +18,22 @@ function App(): JSX.Element {
         <h2>Задачи расположены по разделам</h2>
 
         <nav className="nav-link-container">
-          <NavLink to="/" className="nav-link">Главная</NavLink>
+          {/* <NavLink to="/" className="nav-link">Главная</NavLink> */}
           <NavLink to="/task1/" className="nav-link">Задача №1</NavLink>
-          <NavLink to="/task2/main" className="nav-link">Задача №2</NavLink>
-          <NavLink to="/task3/main" className="nav-link">Задача №3</NavLink>
+          <NavLink to="/task2/" className="nav-link">Задача №2</NavLink>
+          <NavLink to="/task3/" className="nav-link">Задача №3</NavLink>
         </nav>
       </header>
 
       <Routes>
-        <Route path="/" element={<div className='container'>Привет</div>} />
+        {/* Редирект на задачу №1 */}
+        <Route path="/" element={<Navigate replace to="/task1/" />}/>
 
         {/* Компонент задачи №1 */}
         <Route path="/task1/*" element={<NavigationMenu />} />
 
         {/* Компонент задачи №2 */}
-        {/* <Route path="/task2/*" element={<Task2 />} /> */}
+        <Route path="/task2/*" element={<CRUD />} />
 
         {/* Компонент задачи №3 */}
         {/* <Route path="/task3/*" element={<Task3 />} /> */}

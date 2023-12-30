@@ -7,3 +7,37 @@
   margin-top: 15px;
   gap: 25px;
 }
+
+.loading-animation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-2.5em, -50%);
+
+  /* margin-top: calc(50% + 1em);
+  margin-left: calc(50% - 2.5em); */
+
+  width: 2em;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.loading-animation::after {
+  content: "Загрузка"; /* Начальный текст */
+  animation: loading 1s infinite; /* Применяем анимацию с бесконечным повторением */
+}
+
+@keyframes loading {
+  0% {
+    content: "Загрузка";
+  }
+  25% {
+    content: "Загрузка.";
+  }
+  50% {
+    content: "Загрузка..";
+  }
+  75% {
+    content: "Загрузка...";
+  }
+}

@@ -67,6 +67,12 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         // console.error('Unauthorized: Please login again');
       }
 
+
+      if (response.status === 404) {
+        console.log('response.status === 404');
+        navigate('/task3/404');
+      }
+
       if (!response.ok) {
         // throw new Error(`Error: ${response.status}`);
         console.error(`Error: ${response.status}`);
@@ -75,7 +81,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       return response.json();
     } catch (error) {
       // throw error;
-      console.error(error);
+      console.error('fetchApi', error);
     }
   }, [token, navigate]);
   
@@ -146,15 +152,17 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     if (token) {
       try {
         const data = await fetchApi(`/private/news/${newsId}`);
+        console.log('data', data);
         return data as NewsItemType;
       } catch (error) {
         console.error('Ошибка при получении деталей новости:', error);
-        throw error; // Возможно, вам понадобится дальнейшая обработка ошибки
+        navigate('/task3/404');
+        throw error;
       }
     } else {
       throw new Error('No token found');
     }
-  }, [token, fetchApi]);
+  }, [token, fetchApi, navigate]);
 
   return (
     <AuthContext.Provider value={{ token, profile, news, login, logout, fetchProfile, fetchNews, fetchNewsDetail }}>

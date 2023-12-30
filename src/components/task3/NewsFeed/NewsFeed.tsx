@@ -12,7 +12,7 @@ import NewsItem from '../NewsItem/NewsItem';
 export const NewsFeed: React.FC = () => {
   const { news } = useAuth(); // Получение списка новостей из контекста аутентификации
 
-  if (!news) return <div>Loading...</div>; // Отображение состояния загрузки, если новости ещё не загружены
+  if (!news) return <div className='loading-animation'></div>; // Отображение состояния загрузки, если новости ещё не загружены
 
   // Рендеринг списка новостей
   return (

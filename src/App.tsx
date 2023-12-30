@@ -12,7 +12,7 @@ import NotFoundPage from './components/task3/NotFoundPage/NotFoundPage';
  * @returns {JSX.Element} - Основной элемент приложения
  */
 function App(): JSX.Element {
-
+  
   return (
     <Router>
       {/* шапка */}

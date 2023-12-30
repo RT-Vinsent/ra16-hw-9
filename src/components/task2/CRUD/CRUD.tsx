@@ -22,11 +22,13 @@ function Menu() {
    */
   const isExactActive = (path: string) => location.pathname === path;
 
+  const API_HW_PROJECT_NAME = process.env.REACT_APP_HW_PROJECT_NAME || '';
+
   // Рендеринг навигационного меню
   return (
     <nav className="crud-menu">
-      <NavLink to="/task2/" className={isExactActive('/task2/') ? isActive : isNoActive}>Посты</NavLink>
-      <NavLink to="/task2/posts/new" className={(navData) => navData.isActive ? isActive : isNoActive}>Создать пост</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task2/`} className={isExactActive('/task2/') ? isActive : isNoActive}>Посты</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task2/posts/new`} className={(navData) => navData.isActive ? isActive : isNoActive}>Создать пост</NavLink>
     </nav>
   )
 }

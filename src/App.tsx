@@ -31,7 +31,7 @@ function App(): JSX.Element {
 
       <Routes>
         {/* Редирект на задачу №1 */}
-        <Route path={`${API_HW_PROJECT_NAME}/`} element={<Navigate replace to="/task1/" />}/>
+        <Route path={`${API_HW_PROJECT_NAME}/`} element={<Navigate replace to={`${API_HW_PROJECT_NAME}/task1/`} />}/>
 
         {/* Компонент задачи №1 */}
         <Route path={`${API_HW_PROJECT_NAME}/task1/*`} element={<NavigationMenu />} />

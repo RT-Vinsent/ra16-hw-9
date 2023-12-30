@@ -16,13 +16,14 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 export const Authentication: React.FC = () => {
   const { token, profile, login, logout } = useAuth(); // Хуки для аутентификации
   const navigate = useNavigate(); // Хук для навигации
+  const API_HW_PROJECT_NAME = process.env.REACT_APP_HW_PROJECT_NAME || '';
 
   useEffect(() => {
     // Редирект на страницу входа, если пользователь не аутентифицирован
     if (!token) {
-      navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task3/`);
+      navigate(`${API_HW_PROJECT_NAME}/task3/`);
     }
-  }, [token, navigate]);
+  }, [token, navigate, API_HW_PROJECT_NAME]);
 
   // Рендеринг компонента
   return (
@@ -46,7 +47,7 @@ export const Authentication: React.FC = () => {
 
         <Routes>
           {/* Маршрутизация внутри приложения */}
-          <Route path="/" element={token ? <Navigate to="/task3/news" /> : <Welcome />} />
+          <Route path="/" element={token ? <Navigate to={`${API_HW_PROJECT_NAME}/task3/news`} /> : <Welcome />} />
           <Route path="/news" element={token ? <NewsFeed /> : <Welcome />} />
           <Route path="/news/:id" element={token ? <NewsDetail /> : <Welcome />} />
 

@@ -8,13 +8,15 @@ function Menu() {
 
   const isExactActive = (path: string) => location.pathname === path;
 
+  const API_HW_PROJECT_NAME = process.env.REACT_APP_HW_PROJECT_NAME || '';
+
   return (
     <nav className="menu">
       {/* <NavLink to="/task1/" className={(navData) => navData.isActive ? isActive : isNoActive}>Главная</NavLink> */}
-      <NavLink to="/task1/" className={isExactActive('/task1/') ? isActive : isNoActive}>Главная</NavLink>
-      <NavLink to="/task1/drift" className={(navData) => navData.isActive ? isActive : isNoActive}>Дрифт-такси</NavLink>
-      <NavLink to="/task1/timeattack" className={(navData) => navData.isActive ? isActive : isNoActive}>Time Attack</NavLink>
-      <NavLink to="/task1/forza" className={(navData) => navData.isActive ? isActive : isNoActive}>Forza Karting</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task1/`} className={isExactActive('/task1/') ? isActive : isNoActive}>Главная</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task1/drift`} className={(navData) => navData.isActive ? isActive : isNoActive}>Дрифт-такси</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task1/timeattack`} className={(navData) => navData.isActive ? isActive : isNoActive}>Time Attack</NavLink>
+      <NavLink to={`${API_HW_PROJECT_NAME}/task1/forza`} className={(navData) => navData.isActive ? isActive : isNoActive}>Forza Karting</NavLink>
     </nav>
   )
 }

@@ -1,0 +1,16 @@
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 300px;
+
+  margin: 25px auto;
+
+  text-align: center;
+  align-items: center;
+
+  font-size: 1rem;
+}

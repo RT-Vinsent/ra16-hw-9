@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react
 import './App.css';
 import NavigationMenu from './components/task1/NavigationMenu/NavigationMenu';
 import CRUD from './components/task2/CRUD/CRUD';
+import Authentication from './components/task3/Authentication/Authentication';
+import { AuthProvider } from './components/task3/contexts/AuthContext';
+import NotFoundPage from './components/task3/NotFoundPage/NotFoundPage';
 
 /**
  * Главный компонент приложения
@@ -36,7 +39,10 @@ function App(): JSX.Element {
         <Route path="/task2/*" element={<CRUD />} />
 
         {/* Компонент задачи №3 */}
-        {/* <Route path="/task3/*" element={<Task3 />} /> */}
+        <Route path="/task3/*" element={<AuthProvider><Authentication/></AuthProvider>} />
+
+        {/* Обработка 404 ошибок */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       {/* Просто подвал */}

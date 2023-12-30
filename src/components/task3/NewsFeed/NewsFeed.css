@@ -1,0 +1,9 @@
+.news-feed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 10px;
+  margin-top: 15px;
+  gap: 25px;
+}

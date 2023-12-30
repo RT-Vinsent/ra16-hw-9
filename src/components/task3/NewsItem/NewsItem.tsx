@@ -28,7 +28,7 @@ const NewsItem: React.FC<NewsItemProps> = ({ item }) => {
    * Перенаправляет пользователя на страницу деталей новости.
    */
   const handleClick = () => {
-    navigate(`/task3/news/${item.id}`);
+    navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task3/news/${item.id}`);
   };
 
   // Рендеринг элемента новости

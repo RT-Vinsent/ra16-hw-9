@@ -34,7 +34,7 @@ const ViewPost: React.FC = () => {
     try {
       const response = await fetch(`${apiUrl}${id}`, { method: 'DELETE' });
       if (response.ok) {
-        navigate('/task2/'); // Перенаправление после успешного удаления
+        navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task2/`); // Перенаправление после успешного удаления
       } else {
         console.error('Ошибка при удалении поста');
       }

@@ -27,7 +27,7 @@ const CreatePost: React.FC = () => {
    */
   const handleCancel = () => {
     localStorage.setItem('draftContent', content); // Сохранение в localStorage
-    navigate('/task2/'); // Перенаправление
+    navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task2/`); // Перенаправление
   };
 
   /**
@@ -45,7 +45,7 @@ const CreatePost: React.FC = () => {
       });
       if (response.ok) {
         localStorage.removeItem('draftContent'); // Удаление черновика после успешного создания
-        navigate('/task2/');
+        navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task2/`);
       } else {
         console.error('Не удалось создать пост');
       }

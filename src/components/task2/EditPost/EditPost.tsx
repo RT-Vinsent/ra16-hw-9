@@ -43,7 +43,7 @@ const EditPost: React.FC = () => {
         body: JSON.stringify({ id, content }) // Отправка изменений на сервер
       });
       if (response.ok) {
-        navigate(`/task2/posts/${id}`); // Перенаправление после успешного сохранения
+        navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task2/posts/${id}`); // Перенаправление после успешного сохранения
       } else {
         console.error('Не удалось сохранить изменения поста');
       }
@@ -57,7 +57,7 @@ const EditPost: React.FC = () => {
    * Перенаправляет пользователя обратно к просмотру поста.
    */
   const handleClose = () => {
-    navigate(`/task2/posts/${id}`); // Перенаправление
+    navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task2/posts/${id}`); // Перенаправление
   };
 
   // Рендеринг компонента

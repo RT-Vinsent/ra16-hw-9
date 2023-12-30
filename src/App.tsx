@@ -12,6 +12,7 @@ import NotFoundPage from './components/task3/NotFoundPage/NotFoundPage';
  * @returns {JSX.Element} - Основной элемент приложения
  */
 function App(): JSX.Element {
+  const API_HW_PROJECT_NAME = process.env.REACT_APP_HW_PROJECT_NAME || '';
   
   return (
     <Router>
@@ -22,24 +23,24 @@ function App(): JSX.Element {
 
         <nav className="nav-link-container">
           {/* <NavLink to="/" className="nav-link">Главная</NavLink> */}
-          <NavLink to="/task1/" className="nav-link">Задача №1</NavLink>
-          <NavLink to="/task2/" className="nav-link">Задача №2</NavLink>
-          <NavLink to="/task3/" className="nav-link">Задача №3</NavLink>
+          <NavLink to={`${API_HW_PROJECT_NAME}/task1/`} className="nav-link">Задача №1</NavLink>
+          <NavLink to={`${API_HW_PROJECT_NAME}/task2/`} className="nav-link">Задача №2</NavLink>
+          <NavLink to={`${API_HW_PROJECT_NAME}/task3/`} className="nav-link">Задача №3</NavLink>
         </nav>
       </header>
 
       <Routes>
         {/* Редирект на задачу №1 */}
-        <Route path="/" element={<Navigate replace to="/task1/" />}/>
+        <Route path={`${API_HW_PROJECT_NAME}/`} element={<Navigate replace to="/task1/" />}/>
 
         {/* Компонент задачи №1 */}
-        <Route path="/task1/*" element={<NavigationMenu />} />
+        <Route path={`${API_HW_PROJECT_NAME}/task1/*`} element={<NavigationMenu />} />
 
         {/* Компонент задачи №2 */}
-        <Route path="/task2/*" element={<CRUD />} />
+        <Route path={`${API_HW_PROJECT_NAME}/task2/*`} element={<CRUD />} />
 
         {/* Компонент задачи №3 */}
-        <Route path="/task3/*" element={<AuthProvider><Authentication/></AuthProvider>} />
+        <Route path={`${API_HW_PROJECT_NAME}/task3/*`} element={<AuthProvider><Authentication/></AuthProvider>} />
 
         {/* Обработка 404 ошибок */}
         <Route path="*" element={<NotFoundPage />} />

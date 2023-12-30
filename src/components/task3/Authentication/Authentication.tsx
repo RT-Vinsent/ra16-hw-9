@@ -20,7 +20,7 @@ export const Authentication: React.FC = () => {
   useEffect(() => {
     // Редирект на страницу входа, если пользователь не аутентифицирован
     if (!token) {
-      navigate('/task3/');
+      navigate(`${process.env.REACT_APP_HW_PROJECT_NAME}/task3/`);
     }
   }, [token, navigate]);
 

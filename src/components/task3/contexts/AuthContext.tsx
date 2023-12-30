@@ -32,6 +32,7 @@ const useAuth = () => {
 };
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:7070';
+const API_HW_PROJECT_NAME = process.env.REACT_APP_HW_PROJECT_NAME || '';
 
 /**
  * Провайдер контекста аутентификации.
@@ -47,7 +48,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
   const fetchApi = useCallback(async (endpoint: string, options = {}) => {
     if (!token) {
-      navigate('/task3/');
+      navigate(`${API_HW_PROJECT_NAME}/task3/`);
       // return Promise.reject('No token found');
     }
 
@@ -62,7 +63,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         setToken(null);
         setProfile(null);
         setNews([]);
-        navigate('/task3/');
+        navigate(`${API_HW_PROJECT_NAME}/task3/`);
         return Promise.reject('Unauthorized: Please login again');
         // console.error('Unauthorized: Please login again');
       }
@@ -70,7 +71,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
       if (response.status === 404) {
         console.log('response.status === 404');
-        navigate('/task3/404');
+        navigate(`${API_HW_PROJECT_NAME}/task3/404`);
       }
 
       if (!response.ok) {
@@ -124,7 +125,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         localStorage.setItem('token', data.token);
         await fetchProfile();
         await fetchNews();
-        navigate('/task3/news');
+        navigate(`${API_HW_PROJECT_NAME}/task3/news`);
       } else {
         console.error('Ответ сервера:', await response.text());
         throw new Error('Login failed');
@@ -156,7 +157,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         return data as NewsItemType;
       } catch (error) {
         console.error('Ошибка при получении деталей новости:', error);
-        navigate('/task3/404');
+        navigate(`${API_HW_PROJECT_NAME}/task3/404`);
         throw error;
       }
     } else {
